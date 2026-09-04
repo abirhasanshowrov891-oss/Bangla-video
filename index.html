@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>বাংলা ভিডিও</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+      text-align: center;
+    }h1 {
+  padding: 20px;
+  margin: 0;
+}
+
+.video-button {
+  display: block;
+  width: 90%;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 18px;
+  border: none;
+  border-radius: 12px;
+  background: #2196f3;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.message {
+  margin: 30px 20px;
+  color: #aaa;
+  font-size: 16px;
+}
+
+  </style>
+</head><body>  <h1>🎬 বাংলা ভিডিও</h1>  <button class="video-button" onclick="openVideos()">
+    🎬 VIDEO
+  </button>  <div id="message" class="message">
+    ভিডিও দেখতে VIDEO বাটনে চাপুন।
+  </div>  <script>
+    function openVideos() {
+      document.getElementById("message").innerText =
+        "ভিডিও তালিকা শীঘ্রই এখানে আসবে।";
+    }
+  </script></body>
+</html>
