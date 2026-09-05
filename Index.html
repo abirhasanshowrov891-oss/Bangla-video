@@ -1,5 +1,73 @@
+<!DOCTYPE html>
+<html lang="bn">
 <head>
-  <meta name="monetag" content="10930c67209b1ac91cb788c48b9c9bee">
-  ...
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>বাংলা ভিডিও</title>
+
+  <script src='//libtl.com/sdk.js' data-zone='11733758' data-sdk='show_11733758'></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      padding: 20px;
+      margin: 0;
+    }
+
+    .video-button {
+      display: block;
+      width: 90%;
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 18px;
+      border: none;
+      border-radius: 12px;
+      background: #2196f3;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .message {
+      margin: 30px 20px;
+      color: #aaa;
+      font-size: 16px;
+    }
+  </style>
 </head>
-<script src='//libtl.com/sdk.js' data-zone='11733758' data-sdk='show_11733758'></script>
+
+<body>
+
+  <h1>🎬 বাংলা ভিডিও</h1>
+
+  <button class="video-button" onclick="openVideos()">
+    🎬 VIDEO
+  </button>
+
+  <div id="message" class="message">
+    ভিডিও দেখতে VIDEO বাটনে চাপুন।
+  </div>
+
+  <script>
+    function openVideos() {
+      if (typeof show_11729340 === "function") {
+        show_11729340().then(() => {
+          document.getElementById("message").innerText =
+            "বিজ্ঞাপন দেখা হয়েছে! ভিডিও এখন আনলক হয়েছে।";
+        });
+      } else {
+        document.getElementById("message").innerText =
+          "বিজ্ঞাপন লোড হচ্ছে, একটু পরে আবার চেষ্টা করুন।";
+      }
+    }
+  </script>
+
+</body>
+</html>
