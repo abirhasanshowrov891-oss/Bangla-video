@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>বাংলা ভিডিও - Admin</title>
+<title>বাংলা ভিডিও Admin</title>
 
 <style>
 body{
@@ -11,9 +11,8 @@ body{
   padding:20px;
   background:#111;
   color:white;
-  font-family:Arial;
+  font-family:Arial,sans-serif;
 }
-h1{text-align:center}
 .box{
   max-width:500px;
   margin:auto;
@@ -21,6 +20,7 @@ h1{text-align:center}
   padding:20px;
   border-radius:15px;
 }
+h1{text-align:center}
 input,button{
   width:100%;
   box-sizing:border-box;
@@ -34,13 +34,14 @@ button{
   color:white;
   font-size:17px;
 }
+#msg{text-align:center}
 </style>
 </head>
 
 <body>
 
 <div class="box">
-<h1>🎬 Admin Panel</h1>
+<h1>🎬 বাংলা ভিডিও Admin</h1>
 
 <input id="title" type="text" placeholder="ভিডিওর নাম">
 
@@ -52,19 +53,26 @@ button{
 </div>
 
 <script>
-const SUPABASE_URL = "তোমার-Supabase-URL";
-const SUPABASE_KEY = "তোমার-Supabase-anon-key";
+const SUPABASE_URL =
+"https://zfqcfqdjcfetxxxesmkr.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_guGzfcuoQ4Eh-u8eYeVDrw_6l8zdIlG";
 
 async function addVideo(){
 
-const title = document.getElementById("title").value;
-const file_id = document.getElementById("fileid").value;
+const title = document.getElementById("title").value.trim();
+const file_id = document.getElementById("fileid").value.trim();
 const msg = document.getElementById("msg");
 
 if(!title || !file_id){
-msg.innerText = "❌ সব তথ্য পূরণ করো";
-return;
+  msg.innerText = "❌ ভিডিওর নাম ও File ID দিন";
+  return;
 }
+
+msg.innerText = "⏳ সংরক্ষণ হচ্ছে...";
+
+try{
 
 const response = await fetch(
 SUPABASE_URL + "/rest/v1/videos",
@@ -85,12 +93,27 @@ is_active:true
 });
 
 if(response.ok){
-msg.innerText="✅ ভিডিও যোগ হয়েছে!";
+
+msg.innerText = "✅ ভিডিও সফলভাবে যোগ হয়েছে!";
+
 document.getElementById("title").value="";
 document.getElementById("fileid").value="";
+
 }else{
-msg.innerText="❌ ভিডিও যোগ হয়নি";
+
+const errorText = await response.text();
+console.log(errorText);
+
+msg.innerText = "❌ যোগ হয়নি। Supabase permission চেক করতে হবে।";
 }
+
+}catch(error){
+
+console.log(error);
+msg.innerText = "❌ Connection error";
+
+}
+
 }
 </script>
 
