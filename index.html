@@ -1,49 +1,57 @@
-<!DOCTYPE html><html lang="bn">
+<!DOCTYPE html>
+<html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>বাংলা ভিডিও</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: white;
-      text-align: center;
-    }h1 {
-  padding: 20px;
-  margin: 0;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>বাংলা ভিডিও</title>
+
+<script src="https://libtl.com/sdk.js" data-zone="11729340" data-sdk="show_11729340"></script>
+
+<style>
+body{margin:0;background:#111;color:white;font-family:Arial;text-align:center}
+h1{padding:20px}
+.video-button{width:90%;max-width:500px;padding:18px;margin:12px auto;border:0;border-radius:12px;background:#2196f3;color:white;font-size:20px}
+#video{width:90%;max-width:700px;margin:20px auto;border-radius:12px}
+</style>
+</head>
+
+<body>
+
+<h1>🎬 বাংলা ভিডিও</h1>
+
+<button class="video-button" onclick="watchAd()">
+🎬 ভিডিও ১ দেখুন
+</button>
+
+<p id="msg">ভিডিও দেখতে উপরের বাটনে চাপুন।</p>
+
+<video id="video" controls style="display:none">
+<source src="https://drive.google.com/uc?export=download&id=1oBxLREAj7Ux0zRSf-RTr4NiOKzQ3f52y" type="video/mp4">
+</video>
+
+<script>
+function watchAd(){
+
+if(typeof show_11729340 !== "function"){
+document.getElementById("msg").innerText="বিজ্ঞাপন লোড হয়নি। একটু পরে আবার চেষ্টা করুন।";
+return;
 }
 
-.video-button {
-  display: block;
-  width: 90%;
-  max-width: 500px;
-  margin: 20px auto;
-  padding: 18px;
-  border: none;
-  border-radius: 12px;
-  background: #2196f3;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-}
+show_11729340().then(function(){
 
-.message {
-  margin: 30px 20px;
-  color: #aaa;
-  font-size: 16px;
-}
+document.getElementById("msg").innerText="বিজ্ঞাপন দেখা হয়েছে। ভিডিও চালু হচ্ছে...";
 
-  </style>
-</head><body>  <h1>🎬 বাংলা ভিডিও</h1>  <button class="video-button" onclick="openVideos()">
-    🎬 VIDEO
-  </button>  <div id="message" class="message">
-    ভিডিও দেখতে VIDEO বাটনে চাপুন।
-  </div>  <script>
-    function openVideos() {
-      document.getElementById("message").innerText =
-        "ভিডিও তালিকা শীঘ্রই এখানে আসবে।";
-    }
-  </script></body>
+document.getElementById("video").style.display="block";
+
+document.getElementById("video").play();
+
+}).catch(function(){
+
+document.getElementById("msg").innerText="বিজ্ঞাপন সম্পূর্ণ দেখুন, তারপর ভিডিও চালু হবে।";
+
+});
+}
+</script>
+
+</body>
 </html>
